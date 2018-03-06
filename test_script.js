@@ -14,11 +14,13 @@ client.connect((err) => {
   if (err) {
     return console.error("Connection Error", err);
   }
-  client.query("SELECT $1::int AS number", ["1"], (err, result) => {
-    if (err) {
-      return console.error("error running query", err);
-    }
-    console.log(result.rows[0].number); //output: 1
-    client.end();
+
+const queryString = "SELECT * FROM famous_people WHERE last_name = $1::text"
+client.query(queryString, [process.argv[2]], (err, result) => {
+  if (err) {
+    return console.error("error running query", err);
+  }
+  console.log(result.rows[0]); //output: 1
+  client.end();
   });
 });
