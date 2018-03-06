@@ -18,15 +18,19 @@ client.connect((err) => {
 
 const queryString = "SELECT * FROM famous_people WHERE last_name = $1::text"
 client.query(queryString, [process.argv[2]], (err, result) => {
-  const id = result.rows[0].id;
-  const firstName = result.rows[0].first_name;
-  const lastName = result.rows[0].last_name;
-  const birthday = result.rows[0].birthdate;
   if (err) {
     return console.error("error running query", err);
   }
-  console.log("Found " + id + " person(s) by the name '" + lastName + "':");
-  console.log("-" + id + ": " + firstName + " " + lastName + ", born '" + birthday + "'");
+  //result.rowCount = result.rows.length
+  console.log("Found " + result.rowCount + " person(s) by the name '" + process.argv[2] + "':");
+  // start loop
+  result.rows.forEach((result) => {
+    const firstName = result.first_name;
+    const lastName = result.last_name;
+    const birthday = result.birthdate;
+    console.log("-" + result.id + ": " + firstName + " " + lastName + ", born '" + birthday.toDateString() + "'");
+  });
+  // end loop
   client.end();
   });
 });
