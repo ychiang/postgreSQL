@@ -1,0 +1,23 @@
+{
+  "name": "postgreSQL-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "add_person.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ychiang/postgreSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ychiang/postgreSQL/issues"
+  },
+  "homepage": "https://github.com/ychiang/postgreSQL#readme",
+  "dependencies": {
+    "knex": "^0.14.4"
+  }
+}
